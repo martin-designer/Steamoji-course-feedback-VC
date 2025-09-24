@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;title&gt;Course Feedback&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Arial', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background-color: #f0f8ff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>h2 {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gems-container {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gem {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.2s, box-shadow 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gem img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.gem:hover {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: scale(1.2);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.selected {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 0 20px 5px blue;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: scale(1.2);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>#result {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px 25px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h2&gt;Rate the Course&lt;/h2&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="gems-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="black" class="gem"&gt;&lt;img src="https://i.imgur.com/2F1vC3F.png" alt="Black Gem"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="grey" class="gem"&gt;&lt;img src="https://i.imgur.com/1a6cK0P.png" alt="Grey Gem"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="gold" class="gem"&gt;&lt;img src="https://i.imgur.com/XFvQe2x.png" alt="Gold Gem"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;p id="result"&gt;Please select a gem to give your feedback&lt;/p&gt;</p>
+<p class="p1">&lt;button id="submitBtn"&gt;Submit Feedback&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const gems = document.querySelectorAll('.gem');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let selectedFeedback = '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>gems.forEach(gem =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gem.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gems.forEach(g =&gt; g.classList.remove('selected'));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gem.classList.add('selected');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>switch(gem.id) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>case 'black':</p>
+<p class="p1"><span class="Apple-converted-space">          </span>selectedFeedback = 'Do not like';</p>
+<p class="p1"><span class="Apple-converted-space">          </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>case 'grey':</p>
+<p class="p1"><span class="Apple-converted-space">          </span>selectedFeedback = 'It is OK';</p>
+<p class="p1"><span class="Apple-converted-space">          </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>case 'gold':</p>
+<p class="p1"><span class="Apple-converted-space">          </span>selectedFeedback = 'Like';</p>
+<p class="p1"><span class="Apple-converted-space">          </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('result').innerText = `You selected: ${selectedFeedback}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('submitBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(selectedFeedback === '') {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>alert('Please select a gem first!');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>alert(`Your feedback has been submitted: ${selectedFeedback}`);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>console.log(`Feedback submitted: ${selectedFeedback}`);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// You can extend here to send the feedback to a server or database</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
