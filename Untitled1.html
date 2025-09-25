@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Feedback</title>
+  <!-- Favicon (same logo) -->
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAA... (省略中间部分)">
+  <style>
+    body {
+      font-family: "Comic Sans MS", Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #f9f7f7, #dbe9f4);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #logo {
+      margin-top: 30px;
+      width: 120px;
+      height: auto;
+      max-width: 90%;
+    }
+    h1 {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #333;
+    }
+    .gems {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .gem-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.3s;
+      width: 150px;
+    }
+    .gem-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .gem-label {
+      font-size: 20px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      color: #444;
+    }
+    .gem {
+      font-size: 90px;
+      cursor: pointer;
+      transition: transform 0.3s, text-shadow 0.3s;
+    }
+    .gem:hover {
+      transform: scale(1.3);
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+    #message {
+      margin-top: 25px;
+      font-size: 22px;
+      font-weight: bold;
+      color: green;
+    }
+    #admin-panel {
+      margin-top: 50px;
+      background: #f0f4fa;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 700px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    #admin-panel h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    th {
+      background: #e6eefc;
+    }
+    button {
+      padding: 10px 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      background: #4a90e2;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #357ab8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo 和标题 -->
+  <div class="header">
+    <img id="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAA... (省略部分)" alt="STEAMOJI Logo">
+    <h1>How did you feel about today’s class?</h1>
+  </div>
+
+  <div class="gems">
+    <div class="gem-container">
+      <div class="gem-label">Do not like</div>
+      <span class="gem" data-value="Dislike" style="color: black;">◆</span>
+    </div>
+    <div class="gem-container">
+      <div class="gem-label">It is OK</div>
+      <span class="gem" data-value="OK" style="color: grey;">◆</span>
+    </div>
+    <div class="gem-container">
+      <div class="gem-label">Like</div>
+      <span class="gem" data-value="Like" style="color: gold;">◆</span>
+    </div>
+  </div>
+
+  <div id="message"></div>
+
+  <div id="admin-panel">
+    <h2>Teacher Panel</h2>
+    <button onclick="showFeedback()">View All Feedback</button>
+    <button onclick="exportCSV()">Export as CSV</button>
+    <div id="feedback-table"></div>
+  </div>
+
+  <script>
+    const gems = document.querySelectorAll(".gem");
+    const message = document.getElementById("message");
+    const feedbackTable = document.getElementById("feedback-table");
+
+    gems.forEach(gem => {
+      gem.addEventListener("click", () => {
+        const choice = gem.dataset.value;
+        saveChoice(choice);
+        message.textContent = "Your feedback has been recorded. Thank you!";
+      });
+    });
+
+    function saveChoice(choice) {
+      let feedback = JSON.parse(localStorage.getItem("feedback")) || [];
+      feedback.push({
+        choice: choice,
+        time: new Date().toLocaleString()
+      });
+      localStorage.setItem("feedback", JSON.stringify(feedback));
+    }
+
+    function showFeedback() {
+      let feedback = JSON.parse(localStorage.getItem("feedback")) || [];
+      if (feedback.length === 0) {
+        feedbackTable.innerHTML = "<p>No feedback recorded yet.</p>";
+        return;
+      }
+
+      let table = "<table><tr><th>#</th><th>Choice</th><th>Time</th></tr>";
+      feedback.forEach((f, index) => {
+        table += `<tr><td>${index + 1}</td><td>${f.choice}</td><td>${f.time}</td></tr>`;
+      });
+      table += "</table>";
+
+      feedbackTable.innerHTML = table;
+    }
+
+    function exportCSV() {
+      let feedback = JSON.parse(localStorage.getItem("feedback")) || [];
+      if (feedback.length === 0) {
+        alert("No feedback to export.");
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,Index,Choice,Time\n";
+      feedback.forEach((f, index) => {
+        csvContent += `${index + 1},${f.choice},${f.time}\n`;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "feedback.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
